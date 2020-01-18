@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 class NewTransaction extends StatefulWidget {
   final Function addTx;
 
-
   NewTransaction(this.addTx);
 
   @override
@@ -19,7 +18,7 @@ class _NewTransactionState extends State<NewTransaction> {
     final enteredTitle = titleController.text;
     final enteredAmount = double.parse(amountController.text);
 
-    if(enteredTitle.isEmpty || enteredAmount <=0){
+    if (enteredTitle.isEmpty || enteredAmount <= 0) {
       return;
       //return stop the function and addTx wont be executed.
     }
@@ -30,7 +29,6 @@ class _NewTransactionState extends State<NewTransaction> {
     );
 
     Navigator.of(context).pop();
-    
   }
 
   @override
@@ -59,9 +57,24 @@ class _NewTransactionState extends State<NewTransaction> {
               //   amountInput = val;
               // },
             ),
-            FlatButton(
+            Container(
+              height: 70,
+              child: Row(children: <Widget>[
+                Text('No Date Chosen!'),
+                FlatButton(
+                  textColor: Theme.of(context).primaryColor,
+                  child: Text(
+                    'Choose Date',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  onPressed: () {},
+                )
+              ]),
+            ),
+            RaisedButton(
               child: Text('Add Transaction'),
-              textColor: Colors.purple,
+              color: Colors.purple,
+              textColor: Colors.white,
               onPressed: submitData,
             )
           ],
